@@ -5,18 +5,18 @@ import os
 
 
 def parse_books_from_json():
-    json_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static/app/book.json')  
-    with open(json_file_path, 'r') as file:
+    json_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static/app/books.json')  
+    with open(json_file_path, 'r', encoding='utf-8') as file:
         data = json.load(file)
 
         for item in data:
-            title = item.get('title')
-            isbn = item.get('isbn')
-            pageCount = item.get('pageCount')
-            publishedDate = item.get('publishedDate', {}).get('$date')
-            thumbnailUrl = item.get('thumbnailUrl')
-            shortDescription = item.get('shortDescription')
-            longDescription = item.get('longDescription')
+            title = item.get('title', '')
+            isbn = item.get('isbn', '')
+            pageCount = item.get('pageCount', '')
+            publishedDate = item.get('publishedDate', {}).get('$date', None)
+            thumbnailUrl = item.get('thumbnailUrl', '')
+            shortDescription = item.get('shortDescription', '')
+            longDescription = item.get('longDescription', '')
             status = item.get('status')
 
             # Создаем или получаем объект категории
